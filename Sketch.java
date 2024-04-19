@@ -1,23 +1,31 @@
 import processing.core.PApplet;
 import processing.core.PImage;
-
+/**
+* A program Sketch.java that draws and animates two images and 
+* one shape. One of the images move in a circular motion. 
+* @author: B. Yu
+*/
 public class Sketch extends PApplet {
 
   PImage imgGojo;
   PImage imgHamster;
+  PImage imgBackground;
 
   // x and y coordinate, radius, and angle for images
-  float fltGojoX = 0;
-  float fltGojoY = 0;
+  float fltGojoX = 100;
+  float fltGojoY = 100;
 
   float fltHamsterX;
   float fltHamsterY;
   float fltHamsterRadius;
   float fltHamsterAngle;
 
+  float fltBackgroundX = 0;
+  float fltBackgroundY = 0;
+
   // x and y coordinate for circle
-  float fltCircleX = 0;
-  float fltCircleY = 0;
+  float fltCircleX = 100;
+  float fltCircleY = 100;
 
   // Image speed variables
   float fltGojoXSpeed = random(1, 2);
@@ -34,7 +42,7 @@ public class Sketch extends PApplet {
   int red = color(217, 33, 33);
 
   public void settings() {
-    size(400, 400);
+    size(600, 600);
   }
 
   public void setup() {
@@ -43,6 +51,7 @@ public class Sketch extends PApplet {
     // Load images
     imgGojo = loadImage("Gojo-PNG-Photos.png");
     imgHamster = loadImage("8h26xs.png");
+    imgBackground = loadImage("Shibuya_29.png");
 
     // Resize images
     imgGojo.resize(imgGojo.width / 6, imgGojo.height / 6);
@@ -56,7 +65,8 @@ public class Sketch extends PApplet {
   }
 
   public void draw() {
-    background(black);
+    // Draw background
+    image(imgBackground, fltBackgroundX, fltBackgroundY);
 
     // Draw Gojo and move
     image(imgGojo, fltGojoX, fltGojoY);
@@ -71,7 +81,7 @@ public class Sketch extends PApplet {
 
     if (fltGojoY > height - imgGojo.height || fltGojoY < 0) {
       fltGojoYSpeed *= -1;
-    }
+    } 
 
     // Draw hamster that moves in a circular motion
     float fltNewHamsterX = fltHamsterX + cos(fltHamsterAngle) * fltHamsterRadius;
@@ -94,11 +104,11 @@ public class Sketch extends PApplet {
     fltCircleY += fltCircleYSpeed;
 
     // Check for edge collision
-    if (fltCircleX > width - 25 || fltCircleX < 0) {
+    if (fltCircleX > width - 25 || fltCircleX <= 25) {
       fltCircleXSpeed *= -1;
     }
     
-    if (fltCircleY > height - 25 || fltCircleY < 0) {
+    if (fltCircleY > height - 25 || fltCircleY <= 25) {
       fltCircleYSpeed *= -1;
     }
   }

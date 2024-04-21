@@ -11,9 +11,9 @@ public class Sketch extends PApplet {
   PImage imgHamster;
   PImage imgBackground;
 
-  // x and y coordinate, radius, and angle for images
-  float fltGojoX = 100;
-  float fltGojoY = 100;
+  // x and y coordinate, radius, and angle for objects
+  float fltGojoX = 200;
+  float fltGojoY = 200;
 
   float fltHamsterX;
   float fltHamsterY;
@@ -23,17 +23,15 @@ public class Sketch extends PApplet {
   float fltBackgroundX = 0;
   float fltBackgroundY = 0;
 
-  // x and y coordinate for circle
-  float fltCircleX = 100;
-  float fltCircleY = 100;
+  float fltCircleX = 200;
+  float fltCircleY = 200;
 
-  // Image speed variables
+  // Object speed variables
   float fltGojoXSpeed = random(1, 2);
   float fltGojoYSpeed = random(1, 2);
 
   double fltHamsterSpeed = 0.03;
 
-  // Circle speed variables
   float fltCircleXSpeed = random(4, 6);
   float fltCircleYSpeed = random(4, 6);
 
